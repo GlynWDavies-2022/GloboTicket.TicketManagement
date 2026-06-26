@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GloboTicket.TicketManagement.Application/GloboTicket.TicketManagement.Application.csproj" />
+  <Project Path="GloboTicket.TicketManagement.Domain/GloboTicket.TicketManagement.Domain.csproj" />
+</Solution>
