@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GloboTicket.TicketManagement.Application.Features.Categories.Commands;
+using GloboTicket.TicketManagement.Application.Features.Categories.Commands.CreateCategory;
 using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesList;
 using GloboTicket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvent;
 using GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
