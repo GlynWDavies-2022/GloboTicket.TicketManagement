@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="GloboTicket.TicketManagement.Application/GloboTicket.TicketManagement.Application.csproj" />
   <Project Path="GloboTicket.TicketManagement.Domain/GloboTicket.TicketManagement.Domain.csproj" />
+  <Project Path="GloboTicket.TicketManagement.Persistence/GloboTicket.TicketManagement.Persistence.csproj" Id="f506aa61-63fe-428d-92da-877db83c6f81" />
 </Solution>
