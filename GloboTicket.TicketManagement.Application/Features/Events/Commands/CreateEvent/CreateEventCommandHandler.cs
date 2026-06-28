@@ -31,7 +31,7 @@ public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Gui
 
         @event = await _eventRepository.AddAsync(@event);
 
-        var email = new Email() { To = "gill@snowball.be", Body = $"A new event was created: {request}", Subject = "A new event was created" };
+        var email = new Email() { To = "glynwdavies@gmail.com", Body = $"A new event was created: {request}", Subject = "A new event was created" };
 
         try
         {
