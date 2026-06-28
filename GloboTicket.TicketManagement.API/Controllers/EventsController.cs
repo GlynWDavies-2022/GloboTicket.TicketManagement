@@ -1,4 +1,5 @@
-﻿using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventsList;
+﻿using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventDetail;
+using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventsList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,5 +24,12 @@ public class EventsController : ControllerBase
         var result = await _mediator.Send(new GetEventsListQuery());
 
         return Ok(result);
+    }
+
+    [HttpGet("{id}", Name = "GetEventById")]
+    public async Task<ActionResult<EventDetailVm>> GetEventById(Guid id)
+    {
+        var getEventDetailQuery = new GetEventDetailQuery() { Id = id };
+        return Ok(await _mediator.Send(getEventDetailQuery));
     }
 }
