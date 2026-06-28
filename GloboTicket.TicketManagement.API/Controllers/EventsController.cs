@@ -1,4 +1,9 @@
-﻿using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventDetail;
+﻿using GloboTicket.TicketManagement.API.Utilities;
+using GloboTicket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Commands.DeleteEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Commands.UpdateEvent;
+using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventDetail;
+using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventsExport;
 using GloboTicket.TicketManagement.Application.Features.Events.Queries.GetEventsList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +21,14 @@ public class EventsController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpPost(Name = "AddEvent")]
+    public async Task<ActionResult<Guid>> Create([FromBody] CreateEventCommand createEventCommand)
+    {
+        var id = await _mediator.Send(createEventCommand);
+
+        return Ok(id);
+    }
+
     [HttpGet(Name = "GetAllEvents")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesDefaultResponseType]
@@ -30,6 +43,40 @@ public class EventsController : ControllerBase
     public async Task<ActionResult<EventDetailVm>> GetEventById(Guid id)
     {
         var getEventDetailQuery = new GetEventDetailQuery() { Id = id };
+
         return Ok(await _mediator.Send(getEventDetailQuery));
+    }
+
+    [HttpPut(Name = "UpdateEvent")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
+    public async Task<ActionResult> Update([FromBody] UpdateEventCommand updateEventCommand)
+    {
+        await _mediator.Send(updateEventCommand);
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}", Name = "DeleteEvent")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesDefaultResponseType]
+    public async Task<ActionResult> Delete(Guid id)
+    {
+        var deleteEventCommand = new DeleteEventCommand() { EventId = id };
+
+        await _mediator.Send(deleteEventCommand);
+        
+        return NoContent();
+    }
+
+    [HttpGet("export", Name = "ExportEvents")]
+    [FileResultContentType("text/csv")]
+    public async Task<FileResult> ExportEvents()
+    {
+        var fileDto = await _mediator.Send(new GetEventsExportQuery());
+
+        return File(fileDto.Data!, fileDto.ContentType, fileDto.EventExportFileName);
     }
 }
