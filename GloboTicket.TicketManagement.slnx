@@ -1,7 +1,10 @@
 <Solution>
+  <Project Path="GloboTicket.TicketManagement.API.IntegrationTests/GloboTicket.TicketManagement.API.IntegrationTests.csproj" Id="58553301-bf9c-4fcf-9718-33aa2f79828e" />
   <Project Path="GloboTicket.TicketManagement.API/GloboTicket.TicketManagement.API.csproj" Id="23ff7e42-f98b-4795-b21a-917d217a076d" />
+  <Project Path="GloboTicket.TicketManagement.Application.UnitTests/GloboTicket.TicketManagement.Application.UnitTests.csproj" Id="55b43cc9-043e-4142-aa23-59d2092ba9fb" />
   <Project Path="GloboTicket.TicketManagement.Application/GloboTicket.TicketManagement.Application.csproj" />
   <Project Path="GloboTicket.TicketManagement.Domain/GloboTicket.TicketManagement.Domain.csproj" />
   <Project Path="GloboTicket.TicketManagement.Infrastructure/GloboTicket.TicketManagement.Infrastructure.csproj" Id="c61c8212-8399-4bbd-9618-431e6d28431a" />
+  <Project Path="GloboTicket.TicketManagement.Persistence.UnitTests/GloboTicket.TicketManagement.Persistence.UnitTests.csproj" Id="9a7b43ba-47dc-475c-b37e-57519d40427c" />
   <Project Path="GloboTicket.TicketManagement.Persistence/GloboTicket.TicketManagement.Persistence.csproj" Id="f506aa61-63fe-428d-92da-877db83c6f81" />
 </Solution>
